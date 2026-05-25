@@ -127,7 +127,7 @@
     font-style: normal;
     font-weight: 700;
     color: var(--accent);
-    transition: opacity 0.35s ease;
+    transition: opacity 0.25s ease;
   }
   .hero h1 em.word-rotate-out {
     opacity: 0;
@@ -265,7 +265,7 @@
       inset 0 1px 0 rgba(255, 252, 248, 0.9),
       inset 0 -1px 0 rgba(186, 178, 166, 0.32);
   }
-  /* Find — left map matches hero framing */
+  /* Explore — left map matches hero framing */
   .phones.pair.phones--find .phone-frame:first-child img {
     transform: translate(0.5px, -0.5px) scale(1.04);
     transform-origin: center center;
@@ -612,7 +612,7 @@
     font-style: italic;
     font-weight: 800;
     color: var(--accent);
-    transition: opacity 0.35s ease;
+    transition: opacity 0.25s ease;
   }
   .waitlist h2 em.word-rotate-out {
     opacity: 0;
@@ -899,17 +899,17 @@
   </div>
 </section>
 
-<!-- =========================== PANEL 1 · JOURNAL =========================== -->
+<!-- =========================== PANEL 1 · EXPLORE =========================== -->
 <section class="panel">
   <div class="wrap">
     <div class="panel-rule"></div>
-    <h2>Journal</h2>
+    <h2>Explore</h2>
     <p class="pitch">
-      Keep a <em>memory</em> of every drink you try and every cafe you visit.
+      Find the <em>newest lattes</em> and browse the <em>best cafes</em> near you.
     </p>
-    <div class="phones pair phones--journal">
-      <div class="phone-frame"><img src="assets/screen-palette.jpeg" alt="Sip palette" /></div>
-      <div class="phone-frame"><img src="assets/screen-history.png" alt="Sip drink history" /></div>
+    <div class="phones pair phones--find">
+      <div class="phone-frame"><img src="assets/screen-map.jpeg" alt="Sip map of cafes" /></div>
+      <div class="phone-frame"><img src="assets/screen-discover-find.png" alt="Sip discover cafes and drinks" /></div>
     </div>
   </div>
 </section>
@@ -1004,8 +1004,23 @@
   </div>
 </section>
 
-<!-- =========================== PANEL 3 · SHARE =========================== -->
+<!-- =========================== PANEL 3 · JOURNAL =========================== -->
 <section class="panel">
+  <div class="wrap">
+    <div class="panel-rule"></div>
+    <h2>Journal</h2>
+    <p class="pitch">
+      Keep a <em>memory</em> of every drink you try and every cafe you visit.
+    </p>
+    <div class="phones pair phones--journal">
+      <div class="phone-frame"><img src="assets/screen-palette.jpeg" alt="Sip palette" /></div>
+      <div class="phone-frame"><img src="assets/screen-history.png" alt="Sip drink history" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== PANEL 4 · SHARE =========================== -->
+<section class="panel tinted">
   <div class="wrap">
     <div class="panel-rule"></div>
     <h2>Share</h2>
@@ -1015,21 +1030,6 @@
     <div class="phones pair phones--share">
       <div class="phone-frame"><img src="assets/screen-friends.jpeg" alt="Sip friends" /></div>
       <div class="phone-frame"><img src="assets/screen-friend-profile.png" alt="Sip friend profile" /></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================== PANEL 4 · FIND =========================== -->
-<section class="panel tinted">
-  <div class="wrap">
-    <div class="panel-rule"></div>
-    <h2>Find</h2>
-    <p class="pitch">
-      Explore the <em>newest lattes</em> and browse the <em>best cafes</em> near you.
-    </p>
-    <div class="phones pair phones--find">
-      <div class="phone-frame"><img src="assets/screen-map.jpeg" alt="Sip map of cafes" /></div>
-      <div class="phone-frame"><img src="assets/screen-discover-find.png" alt="Sip discover cafes and drinks" /></div>
     </div>
   </div>
 </section>
@@ -1092,15 +1092,19 @@
 
 <script>
 (function () {
-  const ROTATE_MS = 3000;
-  const FADE_MS = 350;
+  const ROTATE_MS = 1550;
+  const FADE_MS = 250;
 
-  function cycleWord(el, words, firstAfterMs) {
+  function cycleWord(el, words) {
     if (!el || words.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     var index = 0;
     el.textContent = words[0];
+
+    function scheduleNext() {
+      window.setTimeout(advance, ROTATE_MS);
+    }
 
     function advance() {
       el.classList.add("word-rotate-out");
@@ -1108,13 +1112,11 @@
         index = (index + 1) % words.length;
         el.textContent = words[index];
         el.classList.remove("word-rotate-out");
+        scheduleNext();
       }, FADE_MS);
     }
 
-    window.setTimeout(function () {
-      advance();
-      window.setInterval(advance, ROTATE_MS);
-    }, firstAfterMs != null ? firstAfterMs : ROTATE_MS);
+    scheduleNext();
   }
 
   cycleWord(document.getElementById("hero-drink"), ["coffee", "matcha", "tea", "drinks"]);
@@ -1132,7 +1134,7 @@
     "hojicha latte",
     "iced mocha",
     "caramel macchiato",
-  ], ROTATE_MS * 1.5);
+  ]);
 })();
 
 (function () {
