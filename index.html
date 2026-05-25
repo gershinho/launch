@@ -225,6 +225,25 @@
   .phones.pair .phone-frame:first-child { transform: translateY(-12px) rotate(-1.5deg); }
   .phones.pair .phone-frame:last-child  { transform: translateY(12px) rotate(1.5deg); }
 
+  /* Journal — palette zoom; history nudged up inside frame */
+  .phones.pair.phones--journal .phone-frame:first-child img {
+    transform: scale(1.045);
+    transform-origin: center center;
+  }
+  .phones.pair.phones--journal .phone-frame:last-child {
+    background: #EBE3D6;
+    border: 1px solid #D5CEC4;
+    box-shadow:
+      0 24px 48px -16px rgba(0, 0, 0, 0.16),
+      0 6px 14px -6px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 252, 248, 0.9),
+      inset 0 -1px 0 rgba(186, 178, 166, 0.32);
+  }
+  .phones.pair.phones--journal .phone-frame:last-child img {
+    transform: translate(0px, -2px) scale(1.005, 1.022);
+    transform-origin: 50% 42%;
+  }
+
   /* ---------- compare stage ---------- */
   .compare-stage {
     margin: 80px auto 0;
@@ -816,7 +835,7 @@
     <p class="pitch">
       Keep a <em>journal</em> of every cafe you visit and every drink you try.
     </p>
-    <div class="phones pair">
+    <div class="phones pair phones--journal">
       <div class="phone-frame"><img src="assets/screen-palette.jpeg" alt="Sip palette" /></div>
       <div class="phone-frame"><img src="assets/screen-history.png" alt="Sip drink history" /></div>
     </div>
