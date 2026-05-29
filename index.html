@@ -280,7 +280,7 @@
       inset 0 -1px 0 rgba(186, 178, 166, 0.32);
   }
   .phones.pair.phones--find .phone-frame:last-child img {
-    transform: translateY(-3px) scale(0.99, 1.003);
+    transform: translateY(-4px) scale(0.99, 1.003);
     transform-origin: 50% 42%;
   }
 
@@ -1148,6 +1148,66 @@
   const successEl = document.getElementById("waitlist-success");
   const fineprint = document.getElementById("waitlist-fineprint");
   const sparkles = document.getElementById("waitlist-sparkles");
+  const POLICY_ERROR = "Please enter a valid email address.";
+
+  const BLOCKED_DOMAINS = new Set([
+    "mailinator.com",
+    "guerrillamail.com",
+    "guerrillamail.info",
+    "guerrillamail.net",
+    "guerrillamail.org",
+    "10minutemail.com",
+    "10minutemail.net",
+    "tempmail.com",
+    "temp-mail.org",
+    "yopmail.com",
+    "getnada.com",
+    "trashmail.com",
+    "sharklasers.com",
+  ]);
+
+  const BANNED_LOCAL_FRAGMENTS = [
+    "fuck",
+    "fuk",
+    "shit",
+    "bitch",
+    "cunt",
+    "dick",
+    "cock",
+    "pussy",
+    "whore",
+    "slut",
+    "nigger",
+    "nigga",
+    "rape",
+    "porn",
+    "hentai",
+  ];
+
+  function getEmailPolicyError(rawEmail) {
+    const email = String(rawEmail || "").trim().toLowerCase();
+    const at = email.lastIndexOf("@");
+    if (at <= 0 || at === email.length - 1) return POLICY_ERROR;
+
+    const local = email.slice(0, at);
+    const domain = email.slice(at + 1).replace(/\.$/, "");
+
+    if (/[^\x21-\x7E]/.test(local)) return POLICY_ERROR;
+    if (BLOCKED_DOMAINS.has(domain)) return POLICY_ERROR;
+
+    const localClean = local.replace(/[^a-z0-9]/g, "");
+    const tokens = local.split(/[^a-z0-9]+/).filter(Boolean);
+
+    for (let i = 0; i < BANNED_LOCAL_FRAGMENTS.length; i++) {
+      const word = BANNED_LOCAL_FRAGMENTS[i];
+      if (localClean === word) return POLICY_ERROR;
+      for (let j = 0; j < tokens.length; j++) {
+        if (tokens[j] === word) return POLICY_ERROR;
+      }
+    }
+
+    return "";
+  }
 
   async function joinWaitlist(email) {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
@@ -1162,7 +1222,15 @@
     });
 
     if (res.status === 409) return { error: "This email is already on the waitlist." };
-    if (!res.ok) return { error: "Something went wrong. Try again." };
+    if (!res.ok) {
+      try {
+        const body = await res.json();
+        if (body.code === "23514" || body.message === POLICY_ERROR) {
+          return { error: POLICY_ERROR };
+        }
+      } catch (_) {}
+      return { error: "Something went wrong. Try again." };
+    }
     return { success: true };
   }
 
@@ -1205,7 +1273,13 @@
       return;
     }
     if (!emailInput.validity.valid) {
-      showError("Please enter a valid email address.");
+      showError(POLICY_ERROR);
+      emailInput.focus();
+      return;
+    }
+    const policyError = getEmailPolicyError(email);
+    if (policyError) {
+      showError(policyError);
       emailInput.focus();
       return;
     }
@@ -1231,6 +1305,13 @@
   });
 
   emailInput.addEventListener("input", clearError);
+  emailInput.addEventListener("blur", function () {
+    if (successEl.classList.contains("is-visible")) return;
+    const email = emailInput.value.trim();
+    if (!email || !emailInput.validity.valid) return;
+    const policyError = getEmailPolicyError(email);
+    if (policyError) showError(policyError);
+  });
 
   document.querySelectorAll('a[href="#waitlist"], .btn-waitlist').forEach(function (link) {
     link.addEventListener("click", function () {
