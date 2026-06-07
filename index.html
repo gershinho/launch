@@ -108,7 +108,7 @@
   }
   .hero h1 {
     font-weight: 700;
-    font-size: clamp(40px, 4.4vw, 56px);
+    font-size: clamp(32px, 3.4vw, 44px);
     line-height: 1.08;
     letter-spacing: -0.025em;
     color: #111;
@@ -172,20 +172,13 @@
   .hero-phone {
     justify-self: center;
     width: 320px;
-    aspect-ratio: 9 / 19.5;
-    border-radius: 44px;
-    overflow: hidden;
-    background: #111;
-    box-shadow:
-      0 24px 48px -16px rgba(0,0,0,0.18),
-      0 6px 14px -6px rgba(0,0,0,0.1);
   }
   .hero-phone img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate(0.5px, -0.5px) scale(1.04);
-    transform-origin: center center;
+    height: auto;
+    filter:
+      drop-shadow(0 24px 48px rgba(0, 0, 0, 0.16))
+      drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
   }
 
   /* ---------- centered section template ---------- */
@@ -230,7 +223,18 @@
     justify-content: center;
     align-items: center;
   }
+  /* screenshots include their own device chrome — no outer shell */
+  .phone-shot {
+    width: 300px;
+    height: auto;
+    filter:
+      drop-shadow(0 24px 48px rgba(0, 0, 0, 0.16))
+      drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+  }
+
+  /* compare mock only */
   .phone-frame {
+    position: relative;
     width: 300px;
     aspect-ratio: 9 / 19.5;
     border-radius: 44px;
@@ -240,69 +244,14 @@
       0 24px 48px -16px rgba(0,0,0,0.16),
       0 6px 14px -6px rgba(0,0,0,0.08);
   }
-  .phone-frame > img { width: 100%; height: 100%; object-fit: cover; }
+
   /* paired phones — slight stagger to feel less stiff */
-  .phones.pair .phone-frame:first-child { transform: translateY(-12px) rotate(-1.5deg); }
-  .phones.pair .phone-frame:last-child  { transform: translateY(12px) rotate(1.5deg); }
+  .phones.pair .phone-shot:first-child { transform: translateY(-12px) rotate(-1.5deg); }
+  .phones.pair .phone-shot:last-child  { transform: translateY(12px) rotate(1.5deg); }
 
-  /* Journal — palette zoom; history nudged up inside frame */
-  .phones.pair.phones--journal .phone-frame:first-child img {
-    transform: scale(1.045);
-    transform-origin: center center;
-  }
-  .phones.pair.phones--journal .phone-frame:last-child {
-    background: #EBE3D6;
-    border: 1px solid #D5CEC4;
-    box-shadow:
-      0 24px 48px -16px rgba(0, 0, 0, 0.16),
-      0 6px 14px -6px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 252, 248, 0.9),
-      inset 0 -1px 0 rgba(186, 178, 166, 0.32);
-  }
-  .phones.pair.phones--journal .phone-frame:last-child img {
-    border-radius: 43px;
-    transform: translateY(-0.5px) scale(0.995, 1.018);
-    transform-origin: 50% 42%;
-  }
-
-  /* Share — friends zoom; profile bezel matches friends cream/silver */
-  .phones.pair.phones--share .phone-frame:first-child img {
-    transform: scale(1.04);
-    transform-origin: center center;
-  }
-  .phones.pair.phones--share .phone-frame:last-child {
-    background: #EBE3D6;
-    border: 1px solid #D5CEC4;
-    box-shadow:
-      0 24px 48px -16px rgba(0, 0, 0, 0.16),
-      0 6px 14px -6px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 252, 248, 0.9),
-      inset 0 -1px 0 rgba(186, 178, 166, 0.32);
-  }
-  /* Explore — left map matches hero framing */
-  .phones.pair.phones--find .phone-frame:first-child img {
-    transform: translate(0.5px, -0.5px) scale(1.04);
-    transform-origin: center center;
-  }
-  .phones.pair.phones--find .phone-frame:last-child {
-    background: #EBE3D6;
-    border: 1px solid #D5CEC4;
-    box-shadow:
-      0 24px 48px -16px rgba(0, 0, 0, 0.16),
-      0 6px 14px -6px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 252, 248, 0.9),
-      inset 0 -1px 0 rgba(186, 178, 166, 0.32);
-  }
-  .phones.pair.phones--find .phone-frame:last-child img {
-    transform: translateY(-4px) scale(0.99, 1.003);
-    transform-origin: 50% 42%;
-  }
-
-  /* Profile PNG matches frame aspect — translate needs slight scale to bite */
-  .phones.pair.phones--share .phone-frame:last-child img {
-    border-radius: 43px;
-    transform: translateY(-0.5px) scale(0.995, 1.018);
-    transform-origin: 50% 42%;
+  /* Share — single full-device mockup */
+  .phones.phones--share {
+    justify-content: center;
   }
 
   /* ---------- compare stage ---------- */
@@ -795,7 +744,7 @@
     }
     .hero { padding: 64px 0 48px; }
     .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: left; }
-    .hero h1 { font-size: clamp(34px, 8vw, 48px); }
+    .hero h1 { font-size: clamp(28px, 6.5vw, 38px); }
     .hero-title-line--drink {
       display: flex;
       flex-wrap: wrap;
@@ -808,7 +757,7 @@
     .panel h2 { font-size: 44px; }
     .panel .pitch { font-size: 19px; margin-top: 36px; }
     .phones { margin-top: 56px; gap: 16px; flex-wrap: wrap; }
-    .phone-frame { width: 240px; }
+    .phone-shot { width: 240px; }
     .waitlist { padding: 120px 0 100px; margin-top: 80px; }
     .waitlist h2 { font-size: clamp(34px, 8vw, 56px); }
     .waitlist-title-line--drink {
@@ -898,7 +847,7 @@
   <div class="wrap hero-inner">
     <div>
       <h1 class="hero-title">
-        <span class="hero-title-line">Journal and share</span>
+        <span class="hero-title-line">Discover cafes and journal</span>
         <span class="hero-title-line hero-title-line--drink">
           your favorite
           <span class="hero-drink-slot">
@@ -906,13 +855,13 @@
             <em id="hero-drink">coffee</em>
           </span>
         </span>
-        <span class="hero-title-line">with your friends.</span>
+        <span class="hero-title-line">with friends.</span>
       </h1>
       <p class="hero-kicker">Coming soon to iOS and Android.</p>
       <a href="#waitlist" class="btn-waitlist">Join the waitlist</a>
     </div>
     <div class="hero-phone">
-      <img src="assets/screen-map.jpeg" alt="Sip map of cafes" />
+      <img src="assets/screen-map.png" alt="Sip map of cafes" width="936" height="1993" decoding="async" fetchpriority="high" />
     </div>
   </div>
 </section>
@@ -926,8 +875,8 @@
       Find the <em>newest lattes</em> and browse the <em>best cafes</em> near you.
     </p>
     <div class="phones pair phones--find">
-      <div class="phone-frame"><img src="assets/screen-map.jpeg" alt="Sip map of cafes" /></div>
-      <div class="phone-frame"><img src="assets/screen-discover-find.png" alt="Sip discover cafes and drinks" /></div>
+      <img class="phone-shot" src="assets/screen-map.png" alt="Sip map of cafes" width="936" height="1993" decoding="async" />
+      <img class="phone-shot" src="assets/screen-discover-find.png" alt="Sip discover cafes and drinks" width="936" height="1993" decoding="async" />
     </div>
   </div>
 </section>
@@ -1031,8 +980,8 @@
       Keep a <em>memory</em> of every drink you try and every cafe you visit.
     </p>
     <div class="phones pair phones--journal">
-      <div class="phone-frame"><img src="assets/screen-palette.jpeg" alt="Sip palette" /></div>
-      <div class="phone-frame"><img src="assets/screen-history.png" alt="Sip drink history" /></div>
+      <img class="phone-shot" src="assets/screen-palette.png" alt="Sip palette" width="936" height="1993" decoding="async" />
+      <img class="phone-shot" src="assets/screen-history.png" alt="Sip drink history" width="936" height="1994" decoding="async" />
     </div>
   </div>
 </section>
@@ -1045,9 +994,8 @@
     <p class="pitch">
       See what your friends are drinking, and what they <em>love and hate</em>.
     </p>
-    <div class="phones pair phones--share">
-      <div class="phone-frame"><img src="assets/screen-friends.jpeg" alt="Sip friends" /></div>
-      <div class="phone-frame"><img src="assets/screen-friend-profile.png" alt="Sip friend profile" /></div>
+    <div class="phones phones--share">
+      <img class="phone-shot" src="assets/screen-friends.png" alt="Sip friends" width="936" height="1993" decoding="async" />
     </div>
   </div>
 </section>
