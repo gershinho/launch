@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoodSip Beta — Privacy Policy</title>
+<meta name="description" content="Privacy Policy for the GoodSip beta app." />
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; max-width: 42rem; padding: 2.5rem 1.25rem 4rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6; color: #2b2118; background: #faf7f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e0d8; background: #1c1713; }
+    a { color: #d4a373; }
+  }
+  .back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .back:hover { text-decoration: underline; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; border-bottom: 1px solid rgba(128,110,95,.35); padding-bottom: .3rem; }
+  .updated { opacity: .7; font-size: .9rem; margin-top: 0; }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: .4rem; }
+  a { color: #8a5a2b; }
+</style>
+</head>
+<body>
+
+<a class="back" href="./">← GoodSip</a>
+
+<h1>GoodSip Beta — Privacy Policy</h1>
+<p class="updated">Last updated: July 21, 2026</p>
+
+<p>GoodSip is a mobile app for logging the drinks you order at cafes, rating them
+through head-to-head comparisons, and discovering cafes near you. This version of
+GoodSip is a <strong>beta</strong>, distributed through Apple TestFlight to a limited
+group of testers. This policy explains what information the app handles during the
+beta and the choices you have. Questions or requests:
+<a href="mailto:goodsipapp@gmail.com">goodsipapp@gmail.com</a>. Your use of the app
+is also governed by our <a href="./terms.html">Terms of Service</a>.</p>
+
+<h2>The short version</h2>
+<ul>
+  <li>We store the account you create, the drinks you log, and the photos you attach.</li>
+  <li>Your location is used only on your phone to show nearby cafes — it is never sent to our servers or stored.</li>
+  <li>There are no analytics or advertising trackers in the app, and we never sell your personal information.</li>
+  <li>This is a beta: expect rough edges, and your data may be reset between builds.</li>
+</ul>
+
+<h2>What we collect</h2>
+<ul>
+  <li><strong>Account information.</strong> Your email address and a password (stored only in hashed form by our authentication provider), plus the username and display name you choose, and optionally a home city and profile photo.</li>
+  <li><strong>Drink logs and ratings.</strong> The drinks you log — cafe, drink details, notes — and your "which was better?" comparison choices, along with the scores computed from them.</li>
+  <li><strong>Photos.</strong> Pictures you choose to take or attach to a logged drink. We only receive photos you explicitly pick — we never scan your photo library.</li>
+  <li><strong>App preferences.</strong> Settings you choose, saved to your account.</li>
+  <li><strong>Basic connection data.</strong> Like any online service, our hosting providers see standard connection details (IP address, device type) when the app talks to our servers. We use this only to run and secure the service.</li>
+</ul>
+<p><strong>Through TestFlight</strong>, Apple shares beta-testing information with us:
+your crash logs, any feedback or screenshots you submit through TestFlight, and basic
+device and usage statistics. Apple's own collection is governed by the
+<a href="https://www.apple.com/legal/internet-services/itunes/testflight/">TestFlight terms</a>
+you accepted when joining the beta.</p>
+
+<h2>Device permissions</h2>
+<p>All permissions are optional — the app works without them, minus that feature.</p>
+<ul>
+  <li><strong>Location (only while using the app):</strong> centers the map and shows cafes near you. Processed on your device only; never uploaded or stored by us.</li>
+  <li><strong>Camera &amp; photo library:</strong> used only when you add a photo to a drink or save your weekly recap image.</li>
+  <li><strong>Contacts:</strong> the app may ask for contacts access for a planned find-friends feature. During the beta, granting it does nothing — no contact data is read or uploaded. We will update this policy before any contact data is ever used.</li>
+</ul>
+
+<h2>What we don't do</h2>
+<p>No third-party analytics or tracking SDKs. No advertising or ad identifiers. No
+payments. No location history. No microphone access. <strong>We do not sell your
+personal information.</strong> We may share or sell aggregated, de-identified insights
+— like drink trends by city or cafe — that never include your name, profile, or
+individual ratings.</p>
+
+<h2>How we use your information</h2>
+<p>To run GoodSip: storing your logs, computing your rankings, and syncing across your
+devices. Your ratings also feed <strong>community scores</strong> (like a cafe's
+average drink score) — these are anonymous statistical aggregates across many users
+and never show your name, profile, or individual ratings; ratings you mark private are
+excluded entirely. We use crash logs and TestFlight feedback to fix bugs, and
+aggregate, de-identified usage patterns to decide what to build.</p>
+
+<h2>Who can see your information</h2>
+<ul>
+  <li><strong>Other testers</strong> can see your public profile (username, display name, avatar, home city) and community-score aggregates — never your private ratings.</li>
+  <li><strong>Supabase</strong> (supabase.com) hosts our database, authentication, and photo storage.</li>
+  <li><strong>Expo / EAS</strong> (expo.dev) delivers app updates and sees standard connection data when the app checks for updates.</li>
+  <li><strong>Apple</strong> operates TestFlight as described above.</li>
+  <li>We may disclose information if required by law.</li>
+</ul>
+<p>These providers act on our instructions; none of them may use your data for their
+own purposes.</p>
+
+<h2>Beta caveats</h2>
+<p>This is pre-release software. Features may change or break, and <strong>we may need
+to reset or delete beta data between builds</strong> — don't treat GoodSip as the only
+copy of anything you care about, and please don't put sensitive information in drink
+notes or photos. When GoodSip launches publicly, a full privacy policy will replace
+this one, and we'll notify you in the app before it takes effect.</p>
+
+<h2>Security</h2>
+<p>Data is encrypted in transit (TLS) and at rest, passwords are hashed, and row-level
+access controls ensure each account can only read and write its own private data. No
+system is perfectly secure, but the beta runs with the same protections we intend for
+launch.</p>
+
+<h2>Your choices</h2>
+<ul>
+  <li>Edit or delete your profile, drink logs, and photos directly in the app.</li>
+  <li>Revoke any device permission in iOS Settings at any time.</li>
+  <li>Email <a href="mailto:goodsipapp@gmail.com">goodsipapp@gmail.com</a> to get a copy of your data or to delete your account and everything associated with it — we'll do it within 30 days (usually much faster).</li>
+  <li>Leave the beta at any time by deleting the app and stopping testing in TestFlight.</li>
+</ul>
+
+<h2>Age</h2>
+<p>GoodSip is not directed at children under 13, and the beta is invite-only for
+testers 13 or older. If you believe a child has an account, email us and we'll delete
+it.</p>
+
+<h2>Contact</h2>
+<p>GoodSip team — <a href="mailto:goodsipapp@gmail.com">goodsipapp@gmail.com</a></p>
+
+</body>
+</html>
