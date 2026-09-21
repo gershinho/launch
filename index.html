@@ -82,6 +82,21 @@
   }
   .nav-links a:hover { opacity: 1; color: var(--accent); }
 
+  /* ---------- app store ---------- */
+  .app-store-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 36px;
+    line-height: 0;
+    transition: opacity 160ms ease;
+  }
+  .app-store-badge:hover { opacity: 0.82; }
+  .app-store-badge img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
   /* ---------- hero ---------- */
   .hero {
     padding: 96px 0 80px;
@@ -265,6 +280,8 @@
       line-height: 1.1;
     }
     .hero-phone { width: min(280px, 100%); }
+    .app-store-badge { margin-top: 28px; }
+    .app-store-badge img { height: 44px; }
     .panel h2 { font-size: 36px; }
     .panel:last-of-type { padding-bottom: 80px; }
   }
@@ -290,6 +307,7 @@
     </a>
     <nav class="nav-links">
       <a href="mailto:goodsipapp@gmail.com">Contact</a>
+      <a href="https://apps.apple.com/us/app/goodsip/id6791275863" target="_blank" rel="noopener noreferrer">App Store</a>
     </nav>
   </div>
 </header>
@@ -309,6 +327,14 @@
         </span>
         <span class="hero-title-line">with friends.</span>
       </h1>
+      <a
+        class="app-store-badge"
+        href="https://apps.apple.com/us/app/goodsip/id6791275863"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="assets/download-on-the-app-store.svg" alt="Download on the App Store" width="144" height="48" />
+      </a>
     </div>
     <div class="hero-phone">
       <img src="assets/screen-map.png" alt="Cafe map with nearby sips" width="1038" height="2048" decoding="async" fetchpriority="high" />
@@ -378,6 +404,7 @@
   <div class="wrap footer-inner">
     <div>&copy; 2026 GoodSip</div>
     <div class="footer-links">
+      <a href="https://apps.apple.com/us/app/goodsip/id6791275863" target="_blank" rel="noopener noreferrer">App Store</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="support.html">Support</a>
