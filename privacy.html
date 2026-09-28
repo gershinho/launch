@@ -38,7 +38,7 @@
 <a class="back" href="./">← GoodSip</a>
 
 <h1>GoodSip — Privacy Policy</h1>
-<p class="updated">Last updated: August 12, 2026</p>
+<p class="updated">Last updated: September 27, 2026</p>
 
 <p>GoodSip (“we,” “us,” or “our”) is a mobile app operated by
 <strong>Krishna Patel d/b/a GoodSip</strong> that lets you log cafe drinks, rate them
@@ -67,6 +67,7 @@ Your use of the app is also governed by our
   <li><strong>Photos.</strong> Pictures you choose to take or attach to a logged drink or avatar. We only receive photos you explicitly pick or take — we never scan your photo library.</li>
   <li><strong>App preferences.</strong> Settings you choose, saved to your account.</li>
   <li><strong>Location-related data.</strong> See Device permissions below.</li>
+  <li><strong>Notification data.</strong> If you allow notifications: a push token for your device, your device’s time zone (so we respect quiet hours), which notification types you have switched on, a record of the notifications we sent you and whether you opened them, and when you last opened the app (used only to time an occasional reminder).</li>
   <li><strong>Analytics and usage data.</strong> App screens, lifecycle events (opened / backgrounded), and a product-analytics identifier linked to your account id when you are signed in (via PostHog). This website may collect standard web analytics via Vercel Analytics.</li>
   <li><strong>Basic connection data.</strong> Our hosting providers see standard connection details (such as IP address and device type) when the app or site talks to our servers. We use this to run and secure the service.</li>
   <li><strong>Support communications.</strong> If you email us, we keep the correspondence so we can help you.</li>
@@ -77,11 +78,12 @@ Your use of the app is also governed by our
 <ul>
   <li><strong>Location (while using the app):</strong> centers the map and shows cafes near you on your device. When you save a drink log, we may compute and store only how far you were from the cafe (<em>distance in meters</em>) — not your coordinates. When you suggest a cafe we don’t have, we may save your coordinates at that moment so we can identify the right place.</li>
   <li><strong>Camera &amp; photo library:</strong> used only when you add a photo to a drink, set an avatar, or save a weekly recap image.</li>
+  <li><strong>Notifications:</strong> used to tell you when someone likes one of your public sips, sends you a friend request or accepts yours, recommends a cafe to you, or when a Friend logs a public sip — plus an occasional reminder if you haven’t opened GoodSip in a couple of weeks. Each type can be switched off in the app (Settings → Notifications), and iOS Settings turns them all off. We never send notifications between 10 pm and 7:30 am your time.</li>
 </ul>
 <p>We do not request access to your contacts.</p>
 
 <h2>What we don’t do</h2>
-<p>No advertising SDKs at launch. No payment card collection (GoodSip has no in-app purchases today). No microphone access. No continuous location history. <strong>We do not sell your personal information.</strong> We may use and share aggregated, de-identified insights — like drink trends by city or cafe — that never include your name, profile, or individual ratings.</p>
+<p>No advertising SDKs at launch. No promotional or marketing notifications — every notification is about activity on your own account or from your Friends. No payment card collection (GoodSip has no in-app purchases today). No microphone access. No continuous location history. <strong>We do not sell your personal information.</strong> We may use and share aggregated, de-identified insights — like drink trends by city or cafe — that never include your name, profile, or individual ratings.</p>
 
 <h2>How we use your information</h2>
 <ul>
@@ -96,6 +98,7 @@ Your use of the app is also governed by our
 <h2>Who can see your information</h2>
 <ul>
   <li><strong>Other users</strong> can see your public profile (username, display name, avatar, home city) and content you share publicly (for example community Sips photos and notes). Community scores never show your name or individual private ratings.</li>
+  <li><strong>Friends and activity.</strong> People you are Friends with can see your public Sips in their Friends feed and are notified when you log one. A cafe recommendation you send, including its note, is seen by the Friend you send it to. When you like someone’s public Sip, they can see your username in their notifications.</li>
   <li><strong>Service providers</strong> that process data on our behalf:</li>
 </ul>
 <table>
@@ -104,7 +107,7 @@ Your use of the app is also governed by our
   </thead>
   <tbody>
     <tr><td>Supabase (us-east-2)</td><td>Database, authentication, photo storage</td></tr>
-    <tr><td>Expo / EAS</td><td>App builds and updates; standard connection data</td></tr>
+    <tr><td>Expo / EAS</td><td>App builds and updates; delivers push notifications (receives the notification text and your device’s push token); standard connection data</td></tr>
     <tr><td>AWS Rekognition</td><td>Automated photo moderation labels</td></tr>
     <tr><td>Anthropic (Claude)</td><td>Automated photo moderation vision check</td></tr>
     <tr><td>PostHog</td><td>App product analytics</td></tr>
@@ -118,6 +121,7 @@ Your use of the app is also governed by our
 <ul>
   <li><strong>While your account is active:</strong> we keep account data, logs, ratings, and photos needed to run GoodSip.</li>
   <li><strong>Account deletion:</strong> use Settings → Delete Account in the app. Deletion is prompt (usually within minutes). Any residual cleanup is completed within 30 days. De-identified aggregates that never identified you may remain.</li>
+  <li><strong>Push tokens:</strong> removed when you sign out, when your device stops accepting notifications, and with your account.</li>
   <li><strong>Operational / server logs:</strong> typically up to about 90 days.</li>
   <li><strong>Analytics:</strong> retained according to PostHog and Vercel Analytics defaults and our configuration.</li>
 </ul>
@@ -131,7 +135,7 @@ Your use of the app is also governed by our
 <ul>
   <li>Edit or delete profile details, drink logs, and photos in the app.</li>
   <li>Delete your account in the app (Settings → Delete Account).</li>
-  <li>Revoke location, camera, or photo permissions in iOS Settings at any time.</li>
+  <li>Revoke location, camera, photo, or notification permissions in iOS Settings at any time, or choose which notifications you get in the app (Settings → Notifications).</li>
   <li>Contact us at <a href="mailto:goodsipapp@gmail.com">goodsipapp@gmail.com</a> for privacy questions or data export requests.</li>
 </ul>
 
