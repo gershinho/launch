@@ -153,7 +153,7 @@ textarea{min-height:96px;resize:vertical}
     <button class="btn" id="submit" type="submit">Send photos</button>
     <div class="progress" id="progress"><i></i></div>
     <p class="err" id="err" role="alert"></p>
-    <p class="foot">Questions? Email <a href="mailto:hello@goodsip.app">hello@goodsip.app</a> · <a href="https://apps.apple.com/us/app/goodsip/id6791275863" target="_blank" rel="noopener">GoodSip on the App Store</a></p>
+    <p class="foot">Questions? Email <a href="mailto:goodsipapp@gmail.com">goodsipapp@gmail.com</a> · <a href="https://apps.apple.com/us/app/goodsip/id6791275863" target="_blank" rel="noopener">GoodSip on the App Store</a></p>
   </form>
 
   <section class="card done hidden" id="done">
@@ -329,7 +329,7 @@ $("form").addEventListener("submit", async e => {
     $("form").classList.add("hidden"); $("done").classList.remove("hidden"); window.scrollTo({top:0, behavior:"smooth"});
   }catch(ex){
     console.error(ex);
-    err.textContent = "Something went wrong sending your photos. Please try again, or email them to hello@goodsip.app.";
+    err.textContent = "Something went wrong sending your photos. Please try again, or email them to goodsipapp@gmail.com.";
     btn.disabled = false; btn.textContent = "Send photos"; $("progress").style.display = "none";
   }
 });
