@@ -66,7 +66,11 @@ h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;m
     document.getElementById('who').textContent = '@' + name;
     document.getElementById('step').hidden = false;
     var open = document.getElementById('open');
-    open.href = 'goodsip://invite?from=' + encodeURIComponent(name);
+    // Carry the inviter's code too: it is what makes the joiner a Friend at once
+    // (without it the app sends a friend request instead). Shape-checked only.
+    var code = new URLSearchParams(location.search).get('c') || '';
+    open.href = 'goodsip://invite?from=' + encodeURIComponent(name) +
+      (/^[0-9a-f]{12}$/.test(code) ? '&c=' + code : '');
     open.hidden = false;
   })();
 </script>
