@@ -20,7 +20,8 @@
   straight from the link (universal link, /.well-known/apple-app-site-association)
   and this page never loads. Without it, this page names who invited you and
   sends you to the App Store through go.goodsip.app/invite, which counts the tap.
-  In the app's sign-up, "Invited by a friend?" is where you name them.
+  In the app's sign-up, "Invited by a friend?" is where you name them; the
+  "Open it" link hands the inviter to an installed app directly.
 -->
 <style>
 :root{--bg:#F6EFE6;--card:#FFFCF7;--ink:#222;--muted:#6E6259;--line:#E4D8CA;--brand:#C24F35;--brand-ink:#fff}
@@ -36,6 +37,7 @@ h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;m
 .btn:active{transform:scale(.98)}
 .step{color:var(--muted);font-size:14px;margin:16px 0 0}
 .step b{color:var(--ink)}
+.open{display:block;margin-top:12px;color:var(--brand);font-weight:700;text-decoration:none;padding:10px}
 </style>
 </head>
 <body>
@@ -47,6 +49,11 @@ h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;m
     <a class="btn" href="https://go.goodsip.app/invite">Get GoodSip on the App Store</a>
     <p class="step" id="step" hidden>When you sign up, add <b id="who"></b> under <b>Invited by a friend?</b> and you'll be Friends right away.</p>
   </div>
+  <!-- Installed GoodSip from the button above? This opens it with the inviter
+       attached, so sign-up arrives with "Invited by" filled in. Also rescues
+       in-app browsers (Instagram, Snapchat) that never hand a universal link to
+       the app. -->
+  <a class="open" id="open" href="goodsip://invite" hidden>Already have GoodSip? Open it</a>
 </main>
 <script>
   // `from` is untrusted: only a well-formed username is shown, and only as text.
@@ -57,6 +64,9 @@ h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;m
     document.getElementById('title').textContent = '@' + name + ' invited you to GoodSip';
     document.getElementById('who').textContent = '@' + name;
     document.getElementById('step').hidden = false;
+    var open = document.getElementById('open');
+    open.href = 'goodsip://invite?from=' + encodeURIComponent(name);
+    open.hidden = false;
   })();
 </script>
 </body>
