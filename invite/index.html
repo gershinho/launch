@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're invited to GoodSip</title>
+<meta name="description" content="A friend invited you to GoodSip — rank the drinks you love and see what your friends are sipping.">
+<meta property="og:title" content="You're invited to GoodSip">
+<meta property="og:description" content="Rank the drinks you love and see what your friends are sipping.">
+<meta property="og:image" content="https://www.goodsip.app/assets/og-image.jpg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<!--
+  Friend invite landing (ADR-085). With GoodSip installed, iOS opens the app
+  straight from the link (universal link, /.well-known/apple-app-site-association)
+  and this page never loads. Without it, this page names who invited you and
+  sends you to the App Store through go.goodsip.app/invite, which counts the tap.
+  In the app's sign-up, "Invited by a friend?" is where you name them.
+-->
+<style>
+:root{--bg:#F6EFE6;--card:#FFFCF7;--ink:#222;--muted:#6E6259;--line:#E4D8CA;--brand:#C24F35;--brand-ink:#fff}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 Satoshi,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap{width:100%;max-width:440px;padding:40px 16px;text-align:center}
+.logo{width:72px;height:auto;margin:0 auto 24px;display:block}
+h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;margin:0 0 12px;overflow-wrap:anywhere}
+.lede{color:var(--muted);margin:0 0 28px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.btn{display:block;background:var(--brand);color:var(--brand-ink);font:700 17px/1 Satoshi,sans-serif;text-decoration:none;padding:16px 20px;border-radius:999px}
+.btn:active{transform:scale(.98)}
+.step{color:var(--muted);font-size:14px;margin:16px 0 0}
+.step b{color:var(--ink)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <img class="logo" src="/assets/logo.svg" alt="GoodSip">
+  <h1 id="title">You're invited to GoodSip</h1>
+  <p class="lede">Rank the drinks you love and see what your friends are sipping.</p>
+  <div class="card">
+    <a class="btn" href="https://go.goodsip.app/invite">Get GoodSip on the App Store</a>
+    <p class="step" id="step" hidden>When you sign up, add <b id="who"></b> under <b>Invited by a friend?</b> and you'll be Friends right away.</p>
+  </div>
+</main>
+<script>
+  // `from` is untrusted: only a well-formed username is shown, and only as text.
+  (function () {
+    var raw = new URLSearchParams(location.search).get('from') || '';
+    var name = raw.replace(/^@+/, '').toLowerCase();
+    if (!/^[a-z0-9_]{3,20}$/.test(name)) return;
+    document.getElementById('title').textContent = '@' + name + ' invited you to GoodSip';
+    document.getElementById('who').textContent = '@' + name;
+    document.getElementById('step').hidden = false;
+  })();
+</script>
+</body>
+</html>

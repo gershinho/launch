@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["S5LNUJ25TU.com.goodsip.app", "S5LNUJ25TU.com.goodsip.app.dev"],
+        "components": [{ "/": "/invite*", "comment": "Friend invite links open GoodSip (ADR-085)" }]
+      }
+    ]
+  }
+}
