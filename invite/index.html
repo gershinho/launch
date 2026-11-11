@@ -29,7 +29,7 @@
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.5 Satoshi,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center}
 .wrap{width:100%;max-width:440px;padding:40px 16px;text-align:center}
-.logo{width:72px;height:auto;margin:0 auto 24px;display:block}
+.logo{width:88px;height:88px;margin:0 auto 24px;display:block;border-radius:22%;box-shadow:0 8px 24px rgba(46,36,29,.14)}
 h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;margin:0 0 12px;overflow-wrap:anywhere}
 .lede{color:var(--muted);margin:0 0 28px;font-size:17px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
@@ -42,7 +42,8 @@ h1{font:900 clamp(28px,7vw,36px)/1.15 Satoshi,sans-serif;letter-spacing:-.02em;m
 </head>
 <body>
 <main class="wrap">
-  <img class="logo" src="/assets/logo.svg" alt="GoodSip">
+  <!-- The current app icon (same file as the share preview), not assets/logo.svg — an older mark. -->
+  <img class="logo" src="/invite/preview.png" alt="GoodSip">
   <h1 id="title">You're invited to GoodSip</h1>
   <p class="lede">Rank the drinks you love and see what your friends are sipping.</p>
   <div class="card">
