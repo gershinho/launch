@@ -128,12 +128,12 @@ textarea{min-height:96px;resize:vertical}
         <button type="button" class="linkbtn" id="changeCafe">Change</button>
       </div>
       <div id="searchBox">
-        <p class="hint">Start typing your cafe's name. More than one location? Pick the one these photos are from. Check the address under each name.</p>
+        <p class="hint">Start typing your cafe's name. More than one location? Pick the one these photos are from. Check the address under each name. If your location isn't there, tap the link below and add it.</p>
         <div class="search">
           <input type="text" id="cafeSearch" placeholder="e.g. Sawada Coffee" autocomplete="off" aria-label="Search for your cafe">
           <div class="results" id="results" role="listbox"></div>
         </div>
-        <button type="button" class="linkbtn" id="notListed" style="margin-top:8px;padding-left:0">My cafe isn't listed</button>
+        <button type="button" class="linkbtn" id="notListed" style="margin-top:8px;padding-left:0">My cafe or location isn't listed</button>
         <div id="manualBox" class="hidden">
           <label for="cafeName">Cafe name</label>
           <input type="text" id="cafeName" maxlength="200">
@@ -238,7 +238,7 @@ $("changeCafe").onclick = () => {
 $("notListed").onclick = () => {
   state.manual = !state.manual;
   $("manualBox").classList.toggle("hidden", !state.manual);
-  $("notListed").textContent = state.manual ? "Search instead" : "My cafe isn't listed";
+  $("notListed").textContent = state.manual ? "Search instead" : "My cafe or location isn't listed";
   if(state.manual){ $("cafeName").value = $("cafeName").value || $("cafeSearch").value; $("cafeName").focus(); }
 };
 let tmr, seq = 0;
@@ -398,7 +398,7 @@ $("form").addEventListener("submit", async e => {
   const cafeName = state.venue ? state.venue.name : $("cafeName").value.trim();
   const cafeAddr = state.venue ? state.venue.address : $("cafeAddr").value.trim();
   const email = $("email").value.trim();
-  if(!cafeName){ err.textContent = state.manual ? "Add your cafe's name." : "Pick your cafe (or tap “My cafe isn't listed”)."; return; }
+  if(!cafeName){ err.textContent = state.manual ? "Add your cafe's name." : "Pick your cafe (or tap “My cafe or location isn't listed”)."; return; }
   if(!state.venue && !cafeAddr){ err.textContent = "Add your cafe's address so we know which location this is."; return; }
   const menuUrl = menuLink();
   if(menuUrl === null){ err.textContent = "That menu link doesn't look right. Try copying it from your browser's address bar."; return; }
