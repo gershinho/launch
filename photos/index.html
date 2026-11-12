@@ -128,7 +128,7 @@ textarea{min-height:96px;resize:vertical}
         <button type="button" class="linkbtn" id="changeCafe">Change</button>
       </div>
       <div id="searchBox">
-        <p class="hint">Start typing your cafe's name.</p>
+        <p class="hint">Start typing your cafe's name. More than one location? Pick the one these photos are from. Check the address under each name.</p>
         <div class="search">
           <input type="text" id="cafeSearch" placeholder="e.g. Sawada Coffee" autocomplete="off" aria-label="Search for your cafe">
           <div class="results" id="results" role="listbox"></div>
@@ -137,8 +137,9 @@ textarea{min-height:96px;resize:vertical}
         <div id="manualBox" class="hidden">
           <label for="cafeName">Cafe name</label>
           <input type="text" id="cafeName" maxlength="200">
-          <label for="cafeAddr">Address</label>
+          <label for="cafeAddr">Address of this location</label>
           <input type="text" id="cafeAddr" maxlength="300" placeholder="Street, city">
+          <p class="hint" style="margin:6px 0 0">More than one location? Give the address of the one these photos are from, and send the form again for each other location.</p>
         </div>
       </div>
     </section>
@@ -398,6 +399,7 @@ $("form").addEventListener("submit", async e => {
   const cafeAddr = state.venue ? state.venue.address : $("cafeAddr").value.trim();
   const email = $("email").value.trim();
   if(!cafeName){ err.textContent = state.manual ? "Add your cafe's name." : "Pick your cafe (or tap “My cafe isn't listed”)."; return; }
+  if(!state.venue && !cafeAddr){ err.textContent = "Add your cafe's address so we know which location this is."; return; }
   const menuUrl = menuLink();
   if(menuUrl === null){ err.textContent = "That menu link doesn't look right. Try copying it from your browser's address bar."; return; }
   if(!state.photos.length && !state.menu.length && !menuUrl){ err.textContent = "Add at least one photo, your menu, or a menu link."; return; }
